@@ -115,15 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 highlight.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const isPinned = this.classList.contains('pinned');
-                    
+
                     // Remove pinned class from all other highlights
                     document.querySelectorAll('.highlight.pinned').forEach(h => {
-                        if (h !== this) h.classList.remove('pinned');
+                        if (h !== this) {
+                            h.classList.remove('pinned');
+                            h.style.boxShadow = '';
+                        }
                     });
-                    
+
                     // Toggle pinned state
                     this.classList.toggle('pinned', !isPinned);
-                    
+
                     // Visual feedback
                     if (!isPinned) {
                         this.style.boxShadow = '0 0 10px rgba(37, 99, 235, 0.5)';
@@ -145,8 +148,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Remove all tooltip headers/contents as requested
+    (function removeAllTooltipHeaderContent() {
+        document.querySelectorAll('.tooltip-header, .tooltip-content').forEach(el => el.remove());
+    })();
+
+    // Ensure tooltips exist before wiring interactions (only the container if missing)
+    ensureAllHighlightsHaveTooltips();
+
+    // Populate hover tooltip content for all highlights
+    populateAllHighlightTooltips();
+
     // Initialize highlight tooltips
     initializeHighlightTooltips();
+
+    // Normalize initial legend state for the default active tab (remove any pre-set disabled styling)
+    (function normalizeInitialLegendState() {
+        const activeTab = document.querySelector('.tab-content.active');
+        if (!activeTab) return;
+        activeTab.querySelectorAll('.legend-item').forEach(item => item.classList.remove('disabled'));
+    })();
 
     // Add highlight statistics
     function addHighlightStats() {
@@ -169,6 +190,112 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize highlight stats
     addHighlightStats();
 
+    // Ensure every highlighted span has an associated tooltip
+    function ensureAllHighlightsHaveTooltips() {
+        const allHighlights = document.querySelectorAll('.highlight');
+        allHighlights.forEach((hl) => {
+            // If this highlight lacks a tooltip, attach an empty container only
+            if (!hl.querySelector('.highlight-tooltip')) {
+                const tooltip = document.createElement('span');
+                tooltip.className = 'highlight-tooltip';
+                hl.appendChild(tooltip);
+            }
+        });
+    }
+
+    // Already executed above before initializing tooltip listeners
+
+    // Generate suitable tooltip content for each highlight based on type and tab
+    function populateAllHighlightTooltips() {
+        const meritMap = {
+            strength: {
+                header: '✓ Strong Knowledge',
+                body: 'Clearly identifies key points; shows solid understanding of fundamentals.'
+            },
+            weakness: {
+                header: '⚠️ Area to Develop',
+                body: 'Touches on the idea but needs more depth or specific evidence.'
+            },
+            example: {
+                header: '📚 Good Example',
+                body: 'Relevant example supports the point; consider linking it to analysis.'
+            },
+            method: {
+                header: '🔬 Method Understanding',
+                body: 'Identifies the method; could add why it was appropriate or any limitations.'
+            },
+            ethics: {
+                header: '⚖️ Ethics Coverage',
+                body: 'Acknowledges participant protection and key guidelines (e.g., BPS).'
+            },
+            evaluation: {
+                header: '📊 Basic Evaluation',
+                body: 'Explains importance; aim to weigh strengths and limitations more critically.'
+            },
+            application: {
+                header: '🌍 Application',
+                body: 'Connects ideas to real-world impact; specify outcomes where possible.'
+            }
+        };
+
+        const distinctionMap = {
+            strength: {
+                header: '⭐ Advanced Insight',
+                body: 'Demonstrates sophisticated understanding with precise, analytical language.'
+            },
+            weakness: {
+                header: '⚠️ Critical Challenge',
+                body: 'Identifies limitations and suggests how to address them methodologically or ethically.'
+            },
+            example: {
+                header: '📚 Impactful Evidence',
+                body: 'Well-chosen study integrated with argument and broader implications.'
+            },
+            method: {
+                header: '🔬 Comprehensive Methods',
+                body: 'Justifies method choice and notes validity, reliability, and limitations.'
+            },
+            ethics: {
+                header: '⚖️ Professional Ethics',
+                body: 'Applies BPS principles effectively and evaluates ethical trade-offs.'
+            },
+            evaluation: {
+                header: '🎯 Critical Evaluation',
+                body: 'Weighs strengths and weaknesses to draw justified conclusions.'
+            },
+            application: {
+                header: '🌍 Policy/Practice Impact',
+                body: 'Shows clear research-to-practice links and societal significance.'
+            }
+        };
+
+        const defaultMap = meritMap; // Fallback for overview/comparison if any highlights exist
+
+        document.querySelectorAll('.highlight').forEach(hl => {
+            const inDistinction = !!hl.closest('#distinction');
+            const inMerit = !!hl.closest('#merit');
+            const map = inDistinction ? distinctionMap : (inMerit ? meritMap : defaultMap);
+
+            // Determine type from class list
+            const type = ['strength','weakness','example','method','ethics','evaluation','application']
+                .find(t => hl.classList.contains(`highlight-${t}`));
+
+            const tooltip = hl.querySelector('.highlight-tooltip');
+            if (!tooltip) return;
+
+            const config = type ? map[type] : { header: '💬 Comment', body: 'Relevant point highlighted.' };
+
+            // Only populate if empty or not yet generated
+            if (!tooltip.hasChildNodes() || !tooltip.dataset.generated) {
+                tooltip.innerHTML = `
+                    <div class="tooltip-header">${config.header}</div>
+                    <div class="tooltip-content">${config.body}</div>
+                `;
+                tooltip.dataset.generated = 'true';
+            }
+        });
+    }
+
 
 
 
@@ -184,27 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (!currentTab) return;
                 
-                // Special handling for comments type
-                if (highlightType === 'comments') {
-                    const allTooltips = currentTab.querySelectorAll('.highlight-tooltip');
-                    allTooltips.forEach(tooltip => {
-                        if (this.checked) {
-                            tooltip.style.display = '';
-                        } else {
-                            tooltip.style.display = 'none';
-                        }
-                    });
-
-                    // Also unpin any pinned highlights so no tooltip stays forced-open
-                    if (!this.checked) {
-                        currentTab.querySelectorAll('.highlight.pinned').forEach(h => h.classList.remove('pinned'));
-                    }
-
-                    // Add visual feedback to legend item
-                    const legendItem = this.closest('.legend-item');
-                    legendItem.classList.toggle('disabled', !this.checked);
-                    return;
-                }
+                // Comments selector removed; only standard highlight types remain
                 
                 const highlights = currentTab.querySelectorAll(`.highlight-${highlightType}`);
                 console.log(`Toggle ${highlightType}: ${this.checked ? 'ON' : 'OFF'}, found ${highlights.length} highlights`);
@@ -314,6 +421,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     highlight.classList.remove('highlight-hidden');
                     highlight.classList.add('highlight-visible');
                 });
+
+                // Restore any hover tooltips display in case they were hidden previously
+                currentTabContent.querySelectorAll('.highlight-tooltip').forEach(tp => {
+                    tp.style.display = '';
+                });
+                // Comments selector removed; nothing to reset for inline comments
                 
                 // Reset legend items
                 const legendItems = currentTabContent.querySelectorAll('.legend-item');

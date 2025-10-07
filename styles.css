@@ -663,6 +663,11 @@ body {
     transform: translateX(-50%) translateY(-5px);
 }
 
+/* Do not show tooltip when it has no content */
+.highlight-tooltip:empty {
+    display: none !important;
+}
+
 /* Pinned highlight styles */
 .highlight.pinned {
     background-color: rgba(37, 99, 235, 0.1) !important;
@@ -823,11 +828,7 @@ body {
     border-bottom-color: #14b8a6;
 }
 
-.legend-color.comments {
-    /* Orange to match tooltip header (#fbbf24) */
-    background-color: rgba(251, 191, 36, 0.2);
-    border-bottom-color: #fbbf24;
-}
+/* .legend-color.comments removed with In-text Comments selector */
 
 /* Highlight states and transitions */
 .highlight {
@@ -900,3 +901,5 @@ body {
         border-bottom-style: dotted !important;
     }
 }
+
+/* Removed in-text comments toggle rules: no inline comments remain */
