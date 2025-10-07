@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTEC Psychology Unit 2 - Merit vs Distinction Exemplars</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="main-title">
+                <i class="fas fa-brain"></i>
+                BTEC Psychology Unit 2 Learning Aim A
+            </h1>
+            <p class="subtitle">Merit and Distinction Exemplars with Comparison</p>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <div class="container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="overview">
+                    <i class="fas fa-home"></i>
+                    Overview
+                </button>
+                <button class="tab-btn" data-tab="merit">
+                    <i class="fas fa-medal"></i>
+                    Merit Example
+                </button>
+                <button class="tab-btn" data-tab="distinction">
+                    <i class="fas fa-trophy"></i>
+                    Distinction Example
+                </button>
+                <button class="tab-btn" data-tab="comparison">
+                    <i class="fas fa-balance-scale"></i>
+                    Comparison
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Overview Tab -->
+            <section class="tab-content active" id="overview">
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-header merit-bg">
+                            <i class="fas fa-medal"></i>
+                            <h3>Merit Standard (A.M1)</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Demonstrates clear understanding of psychological research principles, methods, and processes. Shows competent application of knowledge with appropriate examples.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Covers key principles clearly</li>
+                                <li><i class="fas fa-check"></i> Uses relevant examples</li>
+                                <li><i class="fas fa-check"></i> Shows understanding of ethics</li>
+                                <li><i class="fas fa-check"></i> Descriptive approach</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-header distinction-bg">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Distinction Standard (A.D1)</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Provides comprehensive evaluation and critical analysis. Demonstrates deep understanding with sophisticated connections to theory, ethics, and real-world applications.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-star"></i> Critical evaluation throughout</li>
+                                <li><i class="fas fa-star"></i> Multiple detailed examples</li>
+                                <li><i class="fas fa-star"></i> Links to policy and practice</li>
+                                <li><i class="fas fa-star"></i> Analytical and reflective</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-comparison">
+                    <h3><i class="fas fa-lightbulb"></i> Key Differences at a Glance</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-item">
+                            <h4>Depth of Analysis</h4>
+                            <div class="comparison-bars">
+                                <div class="bar merit-bar">Merit: Descriptive</div>
+                                <div class="bar distinction-bar">Distinction: Critical & Evaluative</div>
+                            </div>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>Use of Evidence</h4>
+                            <div class="comparison-bars">
+                                <div class="bar merit-bar">Merit: Basic Examples</div>
+                                <div class="bar distinction-bar">Distinction: Integrated Evidence</div>
+                            </div>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>Application</h4>
+                            <div class="comparison-bars">
+                                <div class="bar merit-bar">Merit: Academic Focus</div>
+                                <div class="bar distinction-bar">Distinction: Real-world Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Merit Example Tab -->
+            <section class="tab-content" id="merit">
+                <div class="example-header merit-bg">
+                    <i class="fas fa-medal"></i>
+                    <h2>Merit Example (A.M1)</h2>
+                    <p>A solid response demonstrating clear understanding of psychological research</p>
+                </div>
+                
+                <div class="highlights-legend">
+                    <div class="legend-header">
+                        <h4><i class="fas fa-highlighter"></i> Text Highlights Guide <span class="highlight-counter">12 highlights</span></h4>
+                        <div class="legend-controls">
+                            <button class="legend-btn" id="selectAll">Select All</button>
+                            <button class="legend-btn" id="clearAll">Clear All</button>
+                        </div>
+                    </div>
+                    <div class="legend-grid">
+                        <div class="legend-item selectable" data-highlight-type="strength">
+                            <input type="checkbox" id="toggle-strength" class="highlight-toggle" checked>
+                            <label for="toggle-strength" class="legend-label">
+                                <div class="legend-color strength"></div>
+                                <span>Strengths</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="weakness">
+                            <input type="checkbox" id="toggle-weakness" class="highlight-toggle" checked>
+                            <label for="toggle-weakness" class="legend-label">
+                                <div class="legend-color weakness"></div>
+                                <span>Areas for development</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="example">
+                            <input type="checkbox" id="toggle-example" class="highlight-toggle" checked>
+                            <label for="toggle-example" class="legend-label">
+                                <div class="legend-color example"></div>
+                                <span>Examples/Evidence</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="method">
+                            <input type="checkbox" id="toggle-method" class="highlight-toggle" checked>
+                            <label for="toggle-method" class="legend-label">
+                                <div class="legend-color method"></div>
+                                <span>Research methods</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="ethics">
+                            <input type="checkbox" id="toggle-ethics" class="highlight-toggle" checked>
+                            <label for="toggle-ethics" class="legend-label">
+                                <div class="legend-color ethics"></div>
+                                <span>Ethics</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="evaluation">
+                            <input type="checkbox" id="toggle-evaluation" class="highlight-toggle" checked>
+                            <label for="toggle-evaluation" class="legend-label">
+                                <div class="legend-color evaluation"></div>
+                                <span>Evaluation</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="application">
+                            <input type="checkbox" id="toggle-application" class="highlight-toggle" checked>
+                            <label for="toggle-application" class="legend-label">
+                                <div class="legend-color application"></div>
+                                <span>Application</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="comments">
+                            <input type="checkbox" id="toggle-comments" class="highlight-toggle" checked>
+                            <label for="toggle-comments" class="legend-label">
+                                <div class="legend-color comments"></div>
+                                <span>In-text Comments</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="example-text">
+                        <p>Psychological research plays a vital role in improving understanding of human behaviour and developing effective interventions. <span class="highlight highlight-strength">The main principles of psychological research include objectivity, reliability, validity, and ethical responsibility<span class="highlight-tooltip"><div class="tooltip-header">✓ Strong Knowledge</div><div class="tooltip-content">Clearly identifies all four key research principles. Shows solid understanding of fundamentals.</div></span></span>. Researchers must ensure that their methods produce data that is both accurate and generalisable. For example, <span class="highlight highlight-example">cognitive psychologists investigating memory, such as Baddeley (1966), used controlled experiments to test the effects of acoustic similarity on recall<span class="highlight-tooltip"><div class="tooltip-header">📚 Good Example</div><div class="tooltip-content">Appropriate use of classic study to illustrate research principles. Shows knowledge of key researchers.</div></span></span>. <span class="highlight highlight-method">This illustrates the principle of control—keeping variables constant to establish cause and effect<span class="highlight-tooltip"><div class="tooltip-header">🔬 Method Understanding</div><div class="tooltip-content">Demonstrates understanding of experimental control, but could be more detailed about why this matters.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-strength">The research process follows systematic stages: identifying a research question, forming a hypothesis, selecting participants, choosing an appropriate method, collecting and analysing data, and drawing conclusions<span class="highlight-tooltip"><div class="tooltip-header">✓ Process Knowledge</div><div class="tooltip-content">Comprehensive coverage of research stages. Shows clear understanding of the systematic nature of research.</div></span></span>. <span class="highlight highlight-method">Quantitative methods (e.g. experiments and surveys) generate numerical data suitable for statistical analysis, while qualitative methods (e.g. interviews, case studies) provide detailed insights into behaviour<span class="highlight-tooltip"><div class="tooltip-header">🔬 Methods Comparison</div><div class="tooltip-content">Good distinction between quantitative and qualitative approaches, but lacks critical evaluation of when each is most appropriate.</div></span></span>. <span class="highlight highlight-example">For instance, Piaget's use of observation helped explain stages of cognitive development<span class="highlight-tooltip"><div class="tooltip-header">📚 Relevant Example</div><div class="tooltip-content">Another appropriate example, but could be more specific about which observational methods Piaget used.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-ethics">Psychological inquiry requires professional and personal skills, such as accuracy, ethical awareness, and critical thinking. Researchers must follow guidelines from the British Psychological Society (BPS) to ensure participants are protected from harm. Informed consent, confidentiality, and the right to withdraw are essential<span class="highlight-tooltip"><div class="tooltip-header">⚖️ Ethics Coverage</div><div class="tooltip-content">Good coverage of key ethical principles and BPS guidelines. Shows awareness of participant protection.</div></span></span>. <span class="highlight highlight-weakness">Moreover, researchers must be reflective and self-critical—recognising how their own bias could affect data interpretation<span class="highlight-tooltip"><div class="tooltip-header">⚠️ Limited Reflection</div><div class="tooltip-content">Mentions researcher bias but doesn't explore this deeply. Could discuss specific examples of bias or reflexivity strategies.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-method">Different types of psychological research serve different purposes. Cognitive and biological research often use laboratory experiments to study variables such as memory or neurotransmission, while social learning research might use naturalistic observation to examine behaviour in real settings<span class="highlight-tooltip"><div class="tooltip-header">🔬 Research Types</div><div class="tooltip-content">Shows understanding of different research approaches but lacks critical evaluation of strengths/limitations.</div></span></span>. <span class="highlight highlight-application">Each contributes to applied fields such as education, health, and therapy—for example, the development of cognitive behavioural therapy (CBT) from Beck's depression studies<span class="highlight-tooltip"><div class="tooltip-header">🌍 Application</div><div class="tooltip-content">Good connection to real-world applications. Shows awareness of research impact beyond academia.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-evaluation">Overall, psychological research is important because it builds a reliable evidence base for practice, helps explain complex behaviours, and guides improvements in policy and provision<span class="highlight-tooltip"><div class="tooltip-header">📊 Basic Evaluation</div><div class="tooltip-content">Provides reasons why research is important, but evaluation remains largely descriptive rather than critical.</div></span></span>. <span class="highlight highlight-strength">By following systematic processes and maintaining professional standards, research contributes to both scientific knowledge and real-world change<span class="highlight-tooltip"><div class="tooltip-header">✓ Strong Conclusion</div><div class="tooltip-content">Good synthesis that links methodology to broader impact. Shows understanding of research's dual purpose.</div></span></span>.</p>
+                    </div>
+                </div>
+
+                <div class="analysis-box merit-analysis">
+                    <h3><i class="fas fa-search"></i> Merit Characteristics</h3>
+                    <ul>
+                        <li><strong>Clear Structure:</strong> Logical progression through research principles and processes</li>
+                        <li><strong>Appropriate Examples:</strong> References to Baddeley, Piaget, and Beck studies</li>
+                        <li><strong>Comprehensive Coverage:</strong> Addresses methods, ethics, and applications</li>
+                        <li><strong>Descriptive Approach:</strong> Explains what research involves rather than evaluating why</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Distinction Example Tab -->
+            <section class="tab-content" id="distinction">
+                <div class="example-header distinction-bg">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Distinction Example (A.D1)</h2>
+                    <p>An exemplary response showing critical evaluation and deep understanding</p>
+                </div>
+
+                <div class="highlights-legend">
+                    <div class="legend-header">
+                        <h4><i class="fas fa-highlighter"></i> Text Highlights Guide <span class="highlight-counter">16 highlights</span></h4>
+                        <div class="legend-controls">
+                            <button class="legend-btn" id="selectAll-distinction">Select All</button>
+                            <button class="legend-btn" id="clearAll-distinction">Clear All</button>
+                        </div>
+                    </div>
+                    <div class="legend-grid">
+                        <div class="legend-item selectable" data-highlight-type="strength">
+                            <input type="checkbox" id="toggle-strength-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-strength-distinction" class="legend-label">
+                                <div class="legend-color strength"></div>
+                                <span>Advanced strengths</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="example">
+                            <input type="checkbox" id="toggle-example-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-example-distinction" class="legend-label">
+                                <div class="legend-color example"></div>
+                                <span>Sophisticated examples</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="evaluation">
+                            <input type="checkbox" id="toggle-evaluation-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-evaluation-distinction" class="legend-label">
+                                <div class="legend-color evaluation"></div>
+                                <span>Critical evaluation</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="method">
+                            <input type="checkbox" id="toggle-method-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-method-distinction" class="legend-label">
+                                <div class="legend-color method"></div>
+                                <span>Advanced methodology</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="ethics">
+                            <input type="checkbox" id="toggle-ethics-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-ethics-distinction" class="legend-label">
+                                <div class="legend-color ethics"></div>
+                                <span>Professional ethics</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="application">
+                            <input type="checkbox" id="toggle-application-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-application-distinction" class="legend-label">
+                                <div class="legend-color application"></div>
+                                <span>Real-world impact</span>
+                            </label>
+                        </div>
+                        <div class="legend-item selectable" data-highlight-type="comments">
+                            <input type="checkbox" id="toggle-comments-distinction" class="highlight-toggle" checked>
+                            <label for="toggle-comments-distinction" class="legend-label">
+                                <div class="legend-color comments"></div>
+                                <span>In-text Comments</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="example-text">
+                        <p><span class="highlight highlight-evaluation">Conducting psychological research is essential for developing an evidence-based understanding of human thought and behaviour. It underpins all psychological theory and practice, ensuring that interventions, treatments, and policies are supported by empirical data rather than assumptions<span class="highlight-tooltip"><div class="tooltip-header">🎯 Critical Foundation</div><div class="tooltip-content">Immediately establishes the critical importance of research with evaluative language. Shows sophisticated understanding of evidence-based practice.</div></span></span>. <span class="highlight highlight-strength">A fully scientific approach is what distinguishes psychology from pseudoscience: it relies on objectivity, replication, and empirical evidence to validate findings<span class="highlight-tooltip"><div class="tooltip-header">⭐ Analytical Depth</div><div class="tooltip-content">Demonstrates critical thinking by contrasting psychology with pseudoscience. Shows understanding of what makes psychology scientific.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-evaluation">A key reason for conducting psychological inquiry is to enhance wellbeing and social functioning. Research informs how people learn, interact, and respond to stress<span class="highlight-tooltip"><div class="tooltip-header">🎯 Purpose Analysis</div><div class="tooltip-content">Evaluates the purpose and value of research beyond academic knowledge. Shows understanding of social impact.</div></span></span>. <span class="highlight highlight-example">For example, the Stanford Prison Experiment (Zimbardo, 1971) revealed the powerful influence of situational factors on behaviour, prompting major reforms in ethical standards and institutional practices<span class="highlight-tooltip"><div class="tooltip-header">📚 Impactful Example</div><div class="tooltip-content">Uses detailed, sophisticated example that shows both research findings AND real-world impact on ethics and policy.</div></span></span>. <span class="highlight highlight-application">Likewise, Loftus and Palmer's (1974) research on eyewitness testimony influenced legal policy, demonstrating how experimental research can have direct societal impact<span class="highlight-tooltip"><div class="tooltip-header">🌍 Policy Impact</div><div class="tooltip-content">Second strong example explicitly linking research to policy change. Shows understanding of research-to-practice pipeline.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-method">The research process involves identifying a question or hypothesis, reviewing existing literature, choosing suitable methods, ensuring ethical approval, collecting and analysing data, and reporting results<span class="highlight-tooltip"><div class="tooltip-header">🔬 Comprehensive Process</div><div class="tooltip-content">More detailed research process including literature review and ethical approval. Shows advanced understanding.</div></span></span>. <span class="highlight highlight-strength">These stages must be cyclical and reflexive—researchers continually evaluate and refine their approach<span class="highlight-tooltip"><div class="tooltip-header">⭐ Reflexive Thinking</div><div class="tooltip-content">Demonstrates sophisticated understanding that research is iterative and reflexive, not linear. Shows advanced methodological awareness.</div></span></span>. <span class="highlight highlight-evaluation">Both quantitative and qualitative paradigms are essential; quantitative approaches (e.g. lab experiments, surveys) provide measurable, generalisable data, while qualitative approaches (e.g. interviews, case studies) offer depth and context. High-quality psychological inquiry often integrates both (mixed methods), enhancing validity and richness<span class="highlight-tooltip"><div class="tooltip-header">🎯 Critical Methods Analysis</div><div class="tooltip-content">Critical evaluation of different paradigms, explaining strengths of each and advocating for mixed methods. Shows sophisticated methodological understanding.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-strength">The skills required to conduct research effectively include analytical reasoning, ethical integrity, time management, communication, and resilience<span class="highlight-tooltip"><div class="tooltip-header">⭐ Professional Skills</div><div class="tooltip-content">Goes beyond basic skills to include resilience and communication. Shows understanding of research as professional practice.</div></span></span>. <span class="highlight highlight-evaluation">A researcher must also demonstrate self-reflective awareness—recognising their own potential biases, especially in qualitative research where interpretation is subjective<span class="highlight-tooltip"><div class="tooltip-header">🎯 Reflexivity Analysis</div><div class="tooltip-content">Critical evaluation of researcher reflexivity with specific attention to qualitative research challenges. Shows advanced methodological awareness.</div></span></span>. <span class="highlight highlight-example">For example, when investigating stress, my ability to separate my own experiences from the data would be critical to maintaining validity<span class="highlight-tooltip"><div class="tooltip-header">📚 Personal Reflection</div><div class="tooltip-content">Uses personal example to demonstrate reflexive thinking. Shows ability to apply theoretical concepts to own practice.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-ethics">Psychological research must also justify its ethical and social importance. The BPS Code of Ethics and Conduct (2018) ensures that studies protect participants' rights and dignity. Ethical principles such as beneficence, respect, and justice guide all stages of research design<span class="highlight-tooltip"><div class="tooltip-header">⚖️ Professional Ethics</div><div class="tooltip-content">References specific BPS guidelines (2018) and advanced ethical principles beyond basic consent. Shows professional awareness.</div></span></span>. <span class="highlight highlight-strength">Furthermore, professional competence—such as accurate data handling, statistical literacy, and critical evaluation—is essential for ensuring findings are credible and applicable to practice<span class="highlight-tooltip"><div class="tooltip-header">⭐ Professional Standards</div><div class="tooltip-content">Connects technical competence to credibility and application. Shows understanding of professional responsibility.</div></span></span>.</p>
+
+                        <p><span class="highlight highlight-evaluation">Ultimately, the value of psychological research lies not only in its discoveries but in its ability to challenge misconceptions, shape public policy, and refine professional practice<span class="highlight-tooltip"><div class="tooltip-header">🎯 Comprehensive Evaluation</div><div class="tooltip-content">Sophisticated evaluation of research value beyond knowledge generation. Shows understanding of research's transformative power.</div></span></span>. <span class="highlight highlight-strength">It is through rigorous inquiry and critical reflection that psychology continues to evolve as a discipline grounded in scientific integrity and human understanding<span class="highlight-tooltip"><div class="tooltip-header">⭐ Authoritative Conclusion</div><div class="tooltip-content">Powerful conclusion that links methodology to disciplinary evolution. Shows deep understanding of psychology's scientific foundation.</div></span></span>.</p>
+                    </div>
+                </div>
+
+                <div class="analysis-box distinction-analysis">
+                    <h3><i class="fas fa-star"></i> Distinction Characteristics</h3>
+                    <ul>
+                        <li><strong>Critical Evaluation:</strong> Weighs strengths, weaknesses, and ethical implications throughout</li>
+                        <li><strong>Rich Evidence:</strong> Multiple detailed examples with clear links to impact (Zimbardo, Loftus & Palmer)</li>
+                        <li><strong>Professional Awareness:</strong> References BPS Code of Ethics and Conduct (2018)</li>
+                        <li><strong>Reflective Insight:</strong> Demonstrates self-awareness and bias recognition</li>
+                        <li><strong>Societal Impact:</strong> Connects research to policy change and real-world outcomes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Comparison Tab -->
+            <section class="tab-content" id="comparison">
+                <div class="comparison-header">
+                    <i class="fas fa-balance-scale"></i>
+                    <h2>Detailed Comparison: Merit vs Distinction</h2>
+                    <p>A comprehensive analysis of the key differences between standards</p>
+                </div>
+
+                <div class="comparison-section">
+                    <h3><i class="fas fa-brain"></i> 1. Depth and Breadth of Knowledge</h3>
+                    <div class="comparison-table">
+                        <div class="table-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="merit-col">Merit</div>
+                            <div class="distinction-col">Distinction</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Coverage of content</strong></div>
+                            <div class="merit-col">Covers key points clearly (principles, process, methods, ethics).</div>
+                            <div class="distinction-col">Covers all the same points plus extends into wider evaluation, links to theory, ethics, and application.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Examples used</strong></div>
+                            <div class="merit-col">Refers to one or two studies (e.g. Baddeley, Piaget).</div>
+                            <div class="distinction-col">Includes multiple well-chosen, detailed examples (e.g. Zimbardo, Loftus & Palmer, Beck) that illustrate impact and ethical implications.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Understanding of research principles</strong></div>
+                            <div class="merit-col">Demonstrates understanding of basic scientific principles.</div>
+                            <div class="distinction-col">Demonstrates thorough understanding and connects principles to how psychology develops as a science.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h3><i class="fas fa-lightbulb"></i> 2. Level of Evaluation and Critical Thinking</h3>
+                    <div class="comparison-table">
+                        <div class="table-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="merit-col">Merit</div>
+                            <div class="distinction-col">Distinction</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Evaluation</strong></div>
+                            <div class="merit-col">Some discussion of why research is important, but mostly descriptive.</div>
+                            <div class="distinction-col">Provides critical evaluation, weighing strengths, weaknesses, and ethical implications. Discusses why and how research improves understanding and policy.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Reflection</strong></div>
+                            <div class="merit-col">Mentions skills researchers need (e.g. ethics, time management).</div>
+                            <div class="distinction-col">Explores how and why these skills are essential, including self-reflective awareness and bias.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Use of evidence</strong></div>
+                            <div class="merit-col">Uses examples to show understanding.</div>
+                            <div class="distinction-col">Integrates evidence to support judgments and links findings to broader implications for society and professional practice.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h3><i class="fas fa-structure"></i> 3. Structure and Coherence</h3>
+                    <div class="comparison-table">
+                        <div class="table-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="merit-col">Merit</div>
+                            <div class="distinction-col">Distinction</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Organisation</strong></div>
+                            <div class="merit-col">Logical and clear; reads like an informative report.</div>
+                            <div class="distinction-col">More sophisticated flow, builds an argument and uses evaluation throughout.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Language</strong></div>
+                            <div class="merit-col">Clear and academic, mostly descriptive.</div>
+                            <div class="distinction-col">Analytical, evaluative, and critical; shows confidence and precision in academic writing.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Linking and synthesis</strong></div>
+                            <div class="merit-col">Sections treated separately (principles, process, ethics).</div>
+                            <div class="distinction-col">Integrates all aspects — links methodology, ethics, and impact together into a cohesive evaluation.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h3><i class="fas fa-globe"></i> 4. Application and Context</h3>
+                    <div class="comparison-table">
+                        <div class="table-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="merit-col">Merit</div>
+                            <div class="distinction-col">Distinction</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Application of theory</strong></div>
+                            <div class="merit-col">Applies psychological methods to examples (e.g. cognitive, biological).</div>
+                            <div class="distinction-col">Connects theory to real-world outcomes such as policy change, ethical reform, and therapeutic practice.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Awareness of professional context</strong></div>
+                            <div class="merit-col">Acknowledges the need for ethics and skills.</div>
+                            <div class="distinction-col">Demonstrates deep understanding of professional responsibility, referencing the BPS Code of Ethics and Conduct (2018) and impact on society.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h3><i class="fas fa-rocket"></i> 5. Original Thought and Independence</h3>
+                    <div class="comparison-table">
+                        <div class="table-header">
+                            <div class="feature-col">Feature</div>
+                            <div class="merit-col">Merit</div>
+                            <div class="distinction-col">Distinction</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Original ideas</strong></div>
+                            <div class="merit-col">Relies mainly on known theory and description.</div>
+                            <div class="distinction-col">Shows independent critical thought, such as reflection on researcher bias, the dual role of qualitative and quantitative methods, and how psychology maintains credibility.</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="feature-col"><strong>Tone</strong></div>
+                            <div class="merit-col">Competent and factual.</div>
+                            <div class="distinction-col">Authoritative, reflective, and evaluative, showing clear ownership of ideas.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <h3><i class="fas fa-clipboard-check"></i> Summary</h3>
+                    <p>The <strong class="merit-text">Merit standard</strong> work explains and assesses principles and processes of psychological research, while the <strong class="distinction-text">Distinction standard</strong> work evaluates, justifies, and critiques them — showing deeper understanding, critical reflection, and stronger links to ethics, real-world application, and professional practice.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 BTEC Psychology Unit 2 Study Guide. Created for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
