@@ -441,6 +441,49 @@ body {
     margin-top: 3rem;
 }
 
+/* Comparison mode switch and side-by-side view */
+.comparison-mode-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-white);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin: 1rem 0 2rem;
+}
+.mode-buttons { display:flex; gap: .5rem; }
+.mode-btn {
+    border: 1px solid var(--border-light);
+    background: white;
+    padding: .5rem .75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.mode-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+.connectors-toggle { display:flex; align-items:center; gap:.5rem; font-size:.9rem; color: var(--text-gray); }
+
+.side-by-side.hidden { display: none; }
+.side-by-side { position: relative; background: var(--bg-white); border-radius: var(--border-radius); box-shadow: var(--shadow-md); padding: 1rem; margin-top: 1.5rem; }
+.sbs-header { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: .5rem 0 1rem; }
+.sbs-col-title { text-align:center; font-weight:600; }
+.sbs-col-title.merit { color: var(--merit-color); }
+.sbs-col-title.distinction { color: var(--distinction-color); }
+.sbs-rows { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.sbs-row { display: contents; }
+.sbs-cell { position: relative; background: #fff; border: 1px solid var(--border-light); border-radius: 10px; padding: .75rem; }
+.sbs-cell .highlight { cursor: help; }
+.sbs-cell.unmatched { outline: 2px dashed #eab308; }
+.sbs-connectors { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+.sbs-path { stroke: rgba(37,99,235,.5); stroke-width:2; fill:none; }
+.sbs-path.method { stroke: #a855f7; }
+.sbs-path.strength { stroke: #22c55e; }
+.sbs-path.example { stroke: #3b82f6; }
+.sbs-path.ethics { stroke: #f59e0b; }
+.sbs-path.evaluation { stroke: #ec4899; }
+.sbs-path.application { stroke: #14b8a6; }
+
 .summary-box h3 {
     color: var(--primary-blue);
     margin-bottom: 1rem;

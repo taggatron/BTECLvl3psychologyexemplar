@@ -300,6 +300,18 @@
                     <p>A comprehensive analysis of the key differences between standards</p>
                 </div>
 
+                <!-- Comparison Mode Switch -->
+                <div class="comparison-mode-switch">
+                    <div class="mode-buttons">
+                        <button class="mode-btn active" data-mode="analysis"><i class="fas fa-chart-bar"></i> Analysis</button>
+                        <button class="mode-btn" data-mode="side-by-side"><i class="fas fa-columns"></i> Side by side</button>
+                    </div>
+                    <label class="connectors-toggle">
+                        <input type="checkbox" id="toggle-connectors" checked>
+                        <span>Show connectors</span>
+                    </label>
+                </div>
+
                 <div class="comparison-section">
                     <h3><i class="fas fa-brain"></i> 1. Depth and Breadth of Knowledge</h3>
                     <div class="comparison-table">
@@ -423,6 +435,16 @@
                 <div class="summary-box">
                     <h3><i class="fas fa-clipboard-check"></i> Summary</h3>
                     <p>The <strong class="merit-text">Merit standard</strong> work explains and assesses principles and processes of psychological research, while the <strong class="distinction-text">Distinction standard</strong> work evaluates, justifies, and critiques them — showing deeper understanding, critical reflection, and stronger links to ethics, real-world application, and professional practice.</p>
+                </div>
+
+                <!-- Side-by-Side Dynamic View (hidden by default) -->
+                <div id="sideBySideView" class="side-by-side hidden" aria-hidden="true">
+                    <div class="sbs-header">
+                        <div class="sbs-col-title merit">Merit</div>
+                        <div class="sbs-col-title distinction">Distinction</div>
+                    </div>
+                    <div class="sbs-rows" id="sbsRows"></div>
+                    <svg id="sbsConnectors" class="sbs-connectors" aria-hidden="true"></svg>
                 </div>
             </section>
         </div>

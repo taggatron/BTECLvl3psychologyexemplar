@@ -760,3 +760,122 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('BTEC Psychology Web App initialized successfully!');
 });
+
+// Side-by-Side Comparison Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const modeButtons = document.querySelectorAll('#comparison .mode-btn');
+    const comparisonSections = document.querySelectorAll('#comparison .comparison-section, #comparison .summary-box');
+    const sbsView = document.getElementById('sideBySideView');
+    const sbsRows = document.getElementById('sbsRows');
+    const sbsSvg = document.getElementById('sbsConnectors');
+    const toggleConnectors = document.getElementById('toggle-connectors');
+
+    if (!modeButtons.length) return;
+
+    function clearSvg() {
+        if (sbsSvg) sbsSvg.innerHTML = '';
+    }
+
+    function buildSideBySide() {
+        if (!sbsRows) return;
+        sbsRows.innerHTML = '';
+        clearSvg();
+
+        const meritParas = Array.from(document.querySelectorAll('#merit .example-text p'));
+        const distParas = Array.from(document.querySelectorAll('#distinction .example-text p'));
+        const maxRows = Math.max(meritParas.length, distParas.length);
+
+        for (let i = 0; i < maxRows; i++) {
+            const row = document.createElement('div');
+            row.className = 'sbs-row';
+
+            const leftCell = document.createElement('div');
+            leftCell.className = 'sbs-cell';
+            const rightCell = document.createElement('div');
+            rightCell.className = 'sbs-cell';
+
+            if (meritParas[i]) leftCell.innerHTML = meritParas[i].innerHTML;
+            else leftCell.classList.add('unmatched');
+
+            if (distParas[i]) rightCell.innerHTML = distParas[i].innerHTML;
+            else rightCell.classList.add('unmatched');
+
+            sbsRows.appendChild(leftCell);
+            sbsRows.appendChild(rightCell);
+        }
+
+        // After laying out, draw connectors
+        requestAnimationFrame(drawConnectors);
+    }
+
+    function drawConnectors() {
+        if (!sbsSvg || !toggleConnectors?.checked) { clearSvg(); return; }
+        clearSvg();
+
+        const leftCells = sbsRows.querySelectorAll('.sbs-cell:nth-child(2n-1)');
+        const rightCells = sbsRows.querySelectorAll('.sbs-cell:nth-child(2n)');
+
+        const typeList = ['strength','weakness','example','method','ethics','evaluation','application'];
+
+        leftCells.forEach((leftCell, idx) => {
+            const rightCell = rightCells[idx];
+            if (!rightCell) return;
+
+            typeList.forEach(type => {
+                const leftHighlights = leftCell.querySelectorAll(`.highlight-${type}`);
+                const rightHighlights = rightCell.querySelectorAll(`.highlight-${type}`);
+
+                const pairCount = Math.max(leftHighlights.length, rightHighlights.length);
+                for (let i = 0; i < pairCount; i++) {
+                    const lh = leftHighlights[i];
+                    const rh = rightHighlights[i];
+                    if (!lh || !rh) continue; // require both to draw
+
+                    const lRect = lh.getBoundingClientRect();
+                    const rRect = rh.getBoundingClientRect();
+                    const svgRect = sbsSvg.getBoundingClientRect();
+
+                    const x1 = lRect.right - svgRect.left;
+                    const y1 = lRect.top + lRect.height/2 - svgRect.top;
+                    const x2 = rRect.left - svgRect.left;
+                    const y2 = rRect.top + rRect.height/2 - svgRect.top;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    const mx = (x1 + x2) / 2;
+                    const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+                    path.setAttribute('d', d);
+                    path.classList.add('sbs-path', type);
+                    sbsSvg.appendChild(path);
+                }
+            });
+        });
+    }
+
+    function setMode(mode) {
+        const analysis = mode === 'analysis';
+
+        comparisonSections.forEach(el => el.style.display = analysis ? '' : 'none');
+        if (sbsView) {
+            sbsView.classList.toggle('hidden', analysis);
+            sbsView.setAttribute('aria-hidden', analysis ? 'true' : 'false');
+        }
+
+        modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+
+        if (!analysis) {
+            buildSideBySide();
+        } else {
+            clearSvg();
+        }
+    }
+
+    modeButtons.forEach(btn => {
+        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    if (toggleConnectors) {
+        toggleConnectors.addEventListener('change', drawConnectors);
+        window.addEventListener('resize', () => { if (!sbsView.classList.contains('hidden')) drawConnectors(); });
+        window.addEventListener('scroll', () => { if (!sbsView.classList.contains('hidden')) drawConnectors(); }, { passive: true });
+    }
+});
